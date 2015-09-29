@@ -9,6 +9,6 @@ var core = core || {};
 core.Utils = function Utils (window, document) {
 
     return {
-
+        // Stuff
     }
 }

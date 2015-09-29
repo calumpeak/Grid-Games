@@ -1,6 +1,6 @@
-var gulp = require("gulp");
-var concat = require("gulp-concat");
-var stream = require("event-stream");
+var gulp    = require("gulp");
+var concat  = require("gulp-concat");
+var stream  = require("event-stream");
 
 gulp.task("concat", function () {
     var js = [
@@ -22,7 +22,7 @@ gulp.task("concat", function () {
     ).pipe(gulp.dest("./live/"));
 });
 
-// x-ray. Concatenate files on change. Continuing the metroid nameing
+// x-ray. Watch for file changes. Continuing the metroid naming
 gulp.task("x-ray", ["concat"], function () {
     gulp.watch(["src/*.js", "src/**/js/*.js", "src/**/css/*.css"], ["concat"]);
 });

@@ -4,7 +4,7 @@
   "description": "A collection of grid games that I'm getting running with node, express et al as a learning experience",
   "main": "index.js",
   "scripts": {
-    "dev": "gulp x-ray",
+    "xray": "gulp x-ray",
     "concat": "gulp concat"
   },
   "repository": {
