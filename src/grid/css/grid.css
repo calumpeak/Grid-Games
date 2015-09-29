@@ -1,0 +1,23 @@
+/*
+ * CSS for the grid
+ * Today, CSS is the worst possible way to describe the layout of a page.
+ * Tomorrow, CSS will have been the worst possible way to describe the layout of a page for another 24 hours.
+ */
+
+ #grid {
+ 	width:300px;
+ 	height:325px;
+ 	margin: auto;
+ 	top: 0; left: 0; bottom: 0; right: 0;
+ 	padding-top: 20px;
+ 	color: #B6B6B6;
+ }
+
+ #grid td {
+ 	cursor:pointer;
+ 	width:auto;
+ 	height:auto;
+ 	border-radius: 5px;
+ 	-webkit-border-radius:5px;
+ 	-moz-border-radius:5px;
+ }

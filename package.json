@@ -1,0 +1,25 @@
+{
+  "name": "grid-games",
+  "version": "1.0.0",
+  "description": "A collection of grid games that I'm getting running with node, express et al as a learning experience",
+  "main": "index.js",
+  "scripts": {
+    "dev": "gulp x-ray",
+    "concat": "gulp concat"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/echoes221/Grid-Games.git"
+  },
+  "author": "Calum Peak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/echoes221/Grid-Games/issues"
+  },
+  "homepage": "https://github.com/echoes221/Grid-Games#readme",
+  "devDependencies": {
+    "event-stream": "^3.3.1",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0"
+  }
+}
