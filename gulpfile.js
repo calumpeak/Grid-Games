@@ -44,10 +44,10 @@ gulp.task("jscs", function () {
 });
 
 
-// x-ray. Watch for file changes. Continuing the metroid naming
+// Watch for file changes - concatenate if so
 gulp.task("watch", ["concat"], function () {
     gulp.watch(["src/*.js", "src/**/js/*.js", "src/**/css/*.css"], ["concat"]);
 });
 
-// Kick of both linting tests
+// Kick off both linting tests
 gulp.task("lint", ["jscs", "jshint"]);
