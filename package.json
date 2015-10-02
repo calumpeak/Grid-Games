@@ -4,9 +4,10 @@
   "description": "A collection of grid games that I'm getting running with node, express et al as a learning experience",
   "main": "index.js",
   "scripts": {
-    "xray": "gulp x-ray",
+    "watch": "gulp watch",
     "concat": "gulp concat",
-    "start" : "PLACEHOLDER" 
+    "start": "PLACEHOLDER",
+    "lint": "gulp lint"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,9 @@
   "devDependencies": {
     "event-stream": "^3.3.1",
     "gulp": "^3.9.0",
-    "gulp-concat": "^2.6.0"
+    "gulp-concat": "^2.6.0",
+    "gulp-jscs": "^3.0.1",
+    "gulp-jshint": "^1.11.2",
+    "jshint-stylish": "^2.0.1"
   }
 }

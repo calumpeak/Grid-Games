@@ -1,0 +1,11 @@
+{
+    "disallowEmptyBlocks": true,
+    "disallowMixedSpacesAndTabs": true,
+    "disallowMultipleLineBreaks": true,
+    "requireBlocksOnNewline": true,
+    "requireCommaBeforeLineBreak": true,
+    "requireLineFeedAtFileEnd": true,
+    "validateLineBreaks": "LF",
+    "disallowTrailingWhitespace": true,
+    "validateIndentation": 4,
+}

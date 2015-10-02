@@ -18,7 +18,8 @@ core.Dom = function Dom (window, document, utils) {
      */
     function create (tagName) {
         return document.createElement(tagName);
-    };
+    }
+    
     /**
      * Destroy an element
      *

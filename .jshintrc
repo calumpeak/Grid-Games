@@ -1,0 +1,11 @@
+{
+    "asi": false,
+    "expr": true,
+    "node": true,
+    "smarttabs": false,
+    "undef": true,
+    "browser": true,
+    "globals": {
+
+    }
+}

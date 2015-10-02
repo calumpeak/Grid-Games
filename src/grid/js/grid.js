@@ -18,9 +18,9 @@ grid.gridInstance = function gridInstance (window, document, utils, dom, events)
      * @param {Options}
      */
     function Grid (options) {
-        this.rows = options.rows;
-        this.cols = options.cols;
-        this.color = options.color;
+        this.rows   = options.rows;
+        this.cols   = options.cols;
+        this.color  = options.color;
         this.border = options.border;
     }
 
@@ -44,7 +44,7 @@ grid.gridInstance = function gridInstance (window, document, utils, dom, events)
         this.grid.id = "grid";
         // TODO Bind events
         return this.grid;
-    }
+    };
 
     /**
      * Grow the grid in size/add cells
@@ -115,14 +115,7 @@ grid.gridInstance = function gridInstance (window, document, utils, dom, events)
     };
 
     function createGrid (options) {
-        var gridUnit = new Grid({
-            rows: options.rows,
-            cols: options.cols,
-            color: options.color,
-            border: options.border
-        });
-
-        return gridUnit;
+        return new Grid(options);
     }
 
     return {
