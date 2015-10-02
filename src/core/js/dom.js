@@ -6,7 +6,7 @@ var core = core || {};
  * @module core
  * @submodule dom
  */
-core.Dom = function Dom (window, document) {
+core.Dom = function Dom (window, document, utils) {
 
     /**
      * Create an element
@@ -19,7 +19,6 @@ core.Dom = function Dom (window, document) {
     function create (tagName) {
         return document.createElement(tagName);
     };
-
     /**
      * Destroy an element
      *
@@ -29,7 +28,7 @@ core.Dom = function Dom (window, document) {
      */
     function destroy (el) {
         el.parentNode.removeChild(el);
-    };
+    }
 
     /**
      * Build an element
@@ -49,7 +48,7 @@ core.Dom = function Dom (window, document) {
         }
 
         return element;
-    };
+    }
 
     /**
      * Get an elements computed styles
@@ -61,13 +60,25 @@ core.Dom = function Dom (window, document) {
     function getStyle (el) {
         return typeof window.getComputedStyle === "function" ? window.getComputedStyle(el) :
             el.currentStyle;
-    };
+    }
+
+    /**
+     * Returns size of element and position relative to viewport
+     *
+     * @method getRect
+     * @param {Node} el
+     * @returns {Object} left, top, right, bottom, width, height
+     */
+    function getRect (el) {
+        return el.getBoundingClientRect();
+    }
 
 
     return {
         create: create,
         destroy: destroy,
         build: build,
-        getStyle: getStyle
+        getStyle: getStyle,
+        getRect: getRect
     };
 };

@@ -10,5 +10,5 @@ core.Utils = function Utils (window, document) {
 
     return {
         // Stuff
-    }
-}
+    };
+};
