@@ -18,4 +18,13 @@ window.SAX.init = function init () {
     games.memory = function () {
         // Init memory game
     };
+
+    // This return is temp for DEBUGGING
+    // Gives access point into modules from console
+    return {
+        utils: utils,
+        dom: dom,
+        events: events,
+        gridUnit: gridUnit
+    }
 };

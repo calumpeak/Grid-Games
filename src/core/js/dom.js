@@ -19,7 +19,7 @@ core.Dom = function Dom (window, document, utils) {
     function create (tagName) {
         return document.createElement(tagName);
     }
-    
+
     /**
      * Destroy an element
      *
@@ -65,6 +65,7 @@ core.Dom = function Dom (window, document, utils) {
 
     /**
      * Returns size of element and position relative to viewport
+     * "get rekt"
      *
      * @method getRect
      * @param {Node} el
@@ -74,12 +75,28 @@ core.Dom = function Dom (window, document, utils) {
         return el.getBoundingClientRect();
     }
 
+    /**
+     * Returns an elements absolute dimensions
+     *
+     * @method getDimensions
+     * @param {Node} el
+     * @returns {Object} width, height
+     */
+    function getDimensions (el) {
+        var dim = this.getRect(el);
+
+        return {
+            width: dim.getWidth,
+            height: dim.getHeight
+        };
+    }
 
     return {
         create: create,
         destroy: destroy,
         build: build,
         getStyle: getStyle,
-        getRect: getRect
+        getRect: getRect,
+        getDimensions: getDimensions
     };
 };
