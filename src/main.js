@@ -12,11 +12,11 @@ window.SAX.init = function init () {
     var gridUnit = grid.gridInstance(window, document, utils, dom, events);
 
     games.grid = function () {
-        // Init grid game
+        var logic = theGrid.logic(gridUnit, utils, dom, events);
     };
 
     games.memory = function () {
-        // Init memory game
+        var logic = memory.logic(gridUnit, utils, dom, events);
     };
 
     // This return is temp for DEBUGGING
@@ -25,6 +25,7 @@ window.SAX.init = function init () {
         utils: utils,
         dom: dom,
         events: events,
-        gridUnit: gridUnit
+        gridUnit: gridUnit,
+        games: games
     }
 };

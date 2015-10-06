@@ -8,13 +8,22 @@ var hint    = require("gulp-jshint");
 var stream  = require("event-stream");
 var stylish = require('jshint-stylish');
 
+// Main files
+var mainFiles = [
+    "src/**/js/*.js",       // Core modules
+    "src/games/**/js/*.js", // games
+    "src/main.js"           // main/init
+];
+
 // File concatenation
 gulp.task("concat", function () {
+    // TODO duplication from above
     var js = [
-        "src/IIFEopen.js",
-        "src/**/js/*.js",
-        "src/main.js",
-        "src/IIFEclose.js"
+        "src/IIFEopen.js",      // IIFE open
+        "src/**/js/*.js",       // Core modules
+        "src/games/**/js/*.js", // games
+        "src/main.js",          // Main/init
+        "src/IIFEclose.js"      // IFFE close
     ];
 
     var css = [
@@ -31,7 +40,7 @@ gulp.task("concat", function () {
 
 // jshint
 gulp.task('jshint', function () {
-    return gulp.src(["src/**/js/*.js"])
+    return gulp.src(mainFiles)
         .pipe(hint("./.jshintrc"))
         .pipe(hint.reporter(stylish))
         .pipe(hint.reporter("fail"));
@@ -39,14 +48,14 @@ gulp.task('jshint', function () {
 
 // jscs
 gulp.task("jscs", function () {
-    return gulp.src(["src/**/js/*.js"])
+    return gulp.src(mainFiles)
         .pipe(jscs("./.jscsrc"));
 });
 
 
 // Watch for file changes - concatenate if so
 gulp.task("watch", ["concat"], function () {
-    gulp.watch(["src/*.js", "src/**/js/*.js", "src/**/css/*.css"], ["concat"]);
+    gulp.watch(["src/*.js", "src/**/js/*.js", "src/games/**/js/*.js", "src/**/css/*.css"], ["concat"]);
 });
 
 // Kick off both linting tests

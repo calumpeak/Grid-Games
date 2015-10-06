@@ -22,6 +22,8 @@ grid.gridInstance = function gridInstance (window, document, utils, dom, events)
         this.cols   = options.cols;
         this.color  = options.color;
         this.border = options.border;
+
+        return this.build();
     }
 
     /**
