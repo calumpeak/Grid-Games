@@ -14,19 +14,19 @@ grid.timer = function timer () {
         this.default = options.seconds;
     }
 
-    Timer.prototype.reset = function () {
+    Timer.prototype.reset = function reset () {
         // Reset the timer using defaults
     };
 
-    Timer.prototype.shorten = function (time) {
+    Timer.prototype.shorten = function shorten (time) {
         // Shorten the timer by time
     };
 
-    Timer.prototype.lengthen = function (time) {
+    Timer.prototype.lengthen = function lengthen (time) {
         // lengthen the timer by time
     };
 
-    Timer.prototype.freeze = function (time) {
+    Timer.prototype.freeze = function freeze (time) {
         // Freeze the timer for time
     };
 
