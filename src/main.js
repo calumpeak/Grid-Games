@@ -27,5 +27,5 @@ window.SAX.init = function init () {
         events: events,
         gridUnit: gridUnit,
         games: games
-    }
+    };
 };

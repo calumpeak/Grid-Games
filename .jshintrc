@@ -6,6 +6,9 @@
     "undef": true,
     "browser": true,
     "globals": {
-
+        "core": true,
+        "grid": true,
+        "theGrid": true,
+        "memory": true
     }
 }
