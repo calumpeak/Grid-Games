@@ -40,12 +40,12 @@ core.Dom = function Dom (window, document, utils) {
      * @param {Node} arguments subsequent elements to append to el
      */
     function build (el) {
-        var element = el;
+        var element;
         var len = arguments.length;
         var i;
 
         for (i = 1; i < arguments.length; i++) {
-            element.appendChild(arguments[i]);
+            element = el.appendChild(arguments[i]);
         }
 
         return element;
@@ -75,28 +75,11 @@ core.Dom = function Dom (window, document, utils) {
         return el.getBoundingClientRect();
     }
 
-    /**
-     * Returns an elements absolute dimensions
-     *
-     * @method getDimensions
-     * @param {Node} el
-     * @returns {Object} width, height
-     */
-    function getDimensions (el) {
-        var dim = this.getRect(el);
-
-        return {
-            width: dim.getWidth,
-            height: dim.getHeight
-        };
-    }
-
     return {
         create: create,
         destroy: destroy,
         build: build,
         getStyle: getStyle,
-        getRect: getRect,
-        getDimensions: getDimensions
+        getRect: getRect
     };
 };

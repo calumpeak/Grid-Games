@@ -1,5 +1,11 @@
 var grid = grid || {};
 
+/**
+ * Timer ALL the things
+ *
+ * @module gridEl
+ * @submodule timer
+ */
 grid.timer = function timer (window) {
 
     /**
@@ -51,6 +57,8 @@ grid.timer = function timer (window) {
                 self.element.innerHTML = self.seconds.toFixed(DECIMAL);
             }
         };
+
+        //TODO allow timer to emit events
     }
 
     /**
@@ -118,8 +126,13 @@ grid.timer = function timer (window) {
      * @param {Number} time time (ms) that we want to pause the timer for
      */
     Timer.prototype.freeze = function freeze (time) {
+        var self = this;
         this.stop();
-        window.setTimeout(this.start, time);
+
+        function delay () {
+            self.start();
+        }
+        window.setTimeout(delay, time);
     };
 
     function createTimer (options) {

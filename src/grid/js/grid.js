@@ -1,6 +1,11 @@
 var grid = grid || {};
 
-// TODO Pass args
+/**
+ * Grid ALL the things
+ *
+ * @module Grid
+ * @submodule gridInstance
+ */
 grid.gridInstance = function gridInstance (window, document, utils, dom, events) {
 
     /**
@@ -22,12 +27,11 @@ grid.gridInstance = function gridInstance (window, document, utils, dom, events)
         this.cols   = options.cols;
         this.color  = options.color;
         this.border = options.border;
-
-        return this.build();
+        this.holderEl = options.holderEl;
     }
 
     /**
-     * Build the grid
+     * Build the grid and append it to holder element
      *
      * @method build
      * @returns {Node}
@@ -45,7 +49,7 @@ grid.gridInstance = function gridInstance (window, document, utils, dom, events)
 
         this.grid.id = "grid";
         // TODO Bind events
-        return this.grid;
+        this.holderEl.appendChild(this.grid);
     };
 
     /**
@@ -78,11 +82,10 @@ grid.gridInstance = function gridInstance (window, document, utils, dom, events)
      * Get a random cell on the grid
      *
      * @method getRandomCell
-     * @returns {Node}
+     * @returns {Node} td Cell on the grid
      */
     Grid.prototype.getRandomCell = function getRandomCell () {
-        var gridCell; // TODO Pass 'this' when this is built
-        var randomCell;
+        var gridCell = this.grid.getElementsByTagName("td");
 
         function getRandom () {
             var random = gridCell[Math.floor(Math.random() * gridCell.length)];
@@ -96,9 +99,7 @@ grid.gridInstance = function gridInstance (window, document, utils, dom, events)
             return random;
         }
 
-        randomCell = getRandom();
-
-        return randomCell;
+        return getRandom();
     };
 
     /**

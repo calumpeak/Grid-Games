@@ -5,11 +5,10 @@
  */
 
  #grid {
- 	width:300px;
+ 	width:325px;
  	height:325px;
  	margin: auto;
  	top: 0; left: 0; bottom: 0; right: 0;
- 	padding-top: 20px;
  	color: #B6B6B6;
  }
 
@@ -17,6 +16,7 @@
  	cursor:pointer;
  	width:auto;
  	height:auto;
+    border: solid 1px #B6B6B6;
  	border-radius: 5px;
  	-webkit-border-radius:5px;
  	-moz-border-radius:5px;

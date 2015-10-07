@@ -1,7 +1,12 @@
 // SAX namespace...It's a Metroid thing
 window.SAX = window.SAX || {};
 
-// Initialise all modules
+/**
+ * Intialise all dependencies and modules
+ *
+ * @module SAX
+ * @submodule init
+ */
 window.SAX.init = function init () {
     var games = {};
 
@@ -13,7 +18,7 @@ window.SAX.init = function init () {
     var timerUnit = grid.timer(window);
 
     games.grid = function () {
-        var logic = theGrid.logic(gridUnit, utils, dom, events);
+        var logic = theGrid.logic(gridUnit, timerUnit, utils, dom, events);
     };
 
     games.memory = function () {
@@ -27,6 +32,21 @@ window.SAX.init = function init () {
         dom: dom,
         events: events,
         gridUnit: gridUnit,
+        timerUnit: timerUnit,
         games: games
     };
 };
+
+/* FOR DEBUG TODO: Remove
+var program = SAX.init();
+
+var div = document.createElement('div');
+div.style.width = "100px";
+div.style.height = "100px";
+div.style.position = "fixed";
+div.top = "10px";
+div.left = "10px";
+document.body.appendChild(div);
+
+var timer = program.timerUnit.createTimer({seconds:100, element:div})
+*/
