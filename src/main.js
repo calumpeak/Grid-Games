@@ -10,6 +10,7 @@ window.SAX.init = function init () {
     var events = core.Events(window, document, utils, dom);
 
     var gridUnit = grid.gridInstance(window, document, utils, dom, events);
+    var timerUnit = grid.timer(window);
 
     games.grid = function () {
         var logic = theGrid.logic(gridUnit, utils, dom, events);
