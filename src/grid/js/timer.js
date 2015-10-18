@@ -6,7 +6,7 @@ var grid = grid || {};
  * @module gridEl
  * @submodule timer
  */
-grid.timer = function timer (window) {
+grid.timer = function timer (window, document, events) {
 
     /**
      * How often the interval is restarted
@@ -40,6 +40,9 @@ grid.timer = function timer (window) {
     function Timer (options) {
         var self = this;
 
+        // Allow object to fire custom events
+        events.watch(this);
+
         this.timeStore = {
             start: options.seconds,
             adjusted: TIMER_END
@@ -47,28 +50,32 @@ grid.timer = function timer (window) {
         this.seconds = options.seconds;
         this.defaultTime = options.seconds;
         this.element = options.element;
+        this.element.innerHTML = this.seconds.toFixed(DECIMAL);
         this.stopWatch;
 
+        /**
+         * Countdown Function
+         */
         this.ticker = function ticker () {
             if (self.seconds === TIMER_END) {
-                self.stop();
+                self.stop(true);
             } else {
                 --self.seconds;
                 self.element.innerHTML = self.seconds.toFixed(DECIMAL);
             }
         };
-
-        //TODO allow timer to emit events
     }
 
     /**
      * Starts the timer
+     * TODO Switch setInterval for setTimeout
      *
      * @for Timer
      * @method start
      */
     Timer.prototype.start = function start () {
         this.stopWatch = window.setInterval(this.ticker, INTERVAL_TIME);
+        this.fire("timerStart");
     };
 
     /**
@@ -77,8 +84,9 @@ grid.timer = function timer (window) {
      * @for Timer
      * @method stop
      */
-    Timer.prototype.stop = function stop () {
+    Timer.prototype.stop = function stop (bool) {
         window.clearInterval(this.stopWatch);
+        bool ? this.fire("timerEnd") : this.fire("timerStop");
     };
 
     /**
@@ -132,6 +140,7 @@ grid.timer = function timer (window) {
         function delay () {
             self.start();
         }
+
         window.setTimeout(delay, time);
     };
 

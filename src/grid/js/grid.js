@@ -28,6 +28,9 @@ grid.gridInstance = function gridInstance (window, document, utils, dom, events)
         this.color  = options.color;
         this.border = options.border;
         this.holderEl = options.holderEl;
+        
+        // Allow object to fire custom events
+        events.watch(this);
     }
 
     /**

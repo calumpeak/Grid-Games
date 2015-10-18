@@ -2,20 +2,22 @@
 window.SAX = window.SAX || {};
 
 /**
- * Intialise all dependencies and modules
+ * Initialise all dependencies and modules
  *
  * @module SAX
  * @submodule init
  */
 window.SAX.init = function init () {
+    // Allow lazy load of games
     var games = {};
 
+    // Core modules
     var utils = core.Utils(window, document);
     var dom = core.Dom(window, document, utils);
     var events = core.Events(window, document, utils, dom);
 
     var gridUnit = grid.gridInstance(window, document, utils, dom, events);
-    var timerUnit = grid.timer(window);
+    var timerUnit = grid.timer(window, document, events);
 
     games.grid = function () {
         var logic = theGrid.logic(gridUnit, timerUnit, utils, dom, events);
