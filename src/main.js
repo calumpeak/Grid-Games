@@ -15,9 +15,11 @@ window.SAX.init = function init () {
     var utils = core.Utils(window, document);
     var dom = core.Dom(window, document, utils);
     var events = core.Events(window, document, utils, dom);
-
+    
+    // Logic modules
     var gridUnit = grid.gridInstance(window, document, utils, dom, events);
     var timerUnit = grid.timer(window, document, events);
+    var scoreUnit = grid.score(window, document, events);
 
     games.grid = function () {
         var logic = theGrid.logic(gridUnit, timerUnit, utils, dom, events);
@@ -39,16 +41,15 @@ window.SAX.init = function init () {
     };
 };
 
-/* FOR DEBUG TODO: Remove
-var program = SAX.init();
-
-var div = document.createElement('div');
-div.style.width = "100px";
-div.style.height = "100px";
-div.style.position = "fixed";
-div.top = "10px";
-div.left = "10px";
-document.body.appendChild(div);
-
-var timer = program.timerUnit.createTimer({seconds:100, element:div})
-*/
+/* FOR DEBUG TODO: Remove */
+// var program = SAX.init();
+//
+// var div = document.createElement('div');
+// div.style.width = "100px";
+// div.style.height = "100px";
+// div.style.position = "fixed";
+// div.top = "10px";
+// div.left = "10px";
+// document.body.appendChild(div);
+//
+// var timer = program.timerUnit.createTimer({seconds:100, element:div});
