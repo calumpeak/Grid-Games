@@ -7,7 +7,7 @@
     "browser": true,
     "globals": {
         "core": true,
-        "grid": true,
+        "logic": true,
         "theGrid": true,
         "memory": true
     }

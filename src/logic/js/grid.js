@@ -25,9 +25,7 @@ logic.grid = function gridInstance (window, document, utils, dom, events) {
     function Grid (options) {
         this.rows   = options.rows;
         this.cols   = options.cols;
-        this.color  = options.color;
-        this.border = options.border;
-        this.holderEl = options.holderEl;
+        this.elem = options.elem;
 
         // Allow object to fire custom events
         events.watch(this);
@@ -60,7 +58,7 @@ logic.grid = function gridInstance (window, document, utils, dom, events) {
 
         events.bind(this.grid, "click", fireClick);
 
-        this.holderEl.appendChild(this.grid);
+        this.elem.appendChild(this.grid);
     };
 
     /**

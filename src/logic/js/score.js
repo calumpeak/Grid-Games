@@ -20,9 +20,9 @@ logic.score = function score (window, document, events) {
         // Allow object to fire custom events
         events.watch(this);
 
-        this.element = options.element;
+        this.elem = options.elem;
         this.score = options.score || DEFAULT_SCORE;
-        this.element.innerHTML = this.score;
+        this.elem.innerHTML = this.score;
     }
 
     /**
@@ -33,8 +33,8 @@ logic.score = function score (window, document, events) {
      * @param {Integer} val number to increase score by
      */
     Score.prototype.increase = function increase (val) {
-        this.score = val ? this.score + val : ++this.score;
-        this.element.innerHTML = this.score;
+        this.score = val ? this.score + val : this.score++;
+        this.elem.innerHTML = this.score;
         this.fire("scoreChange", { score: this.score });
     };
 
@@ -46,8 +46,8 @@ logic.score = function score (window, document, events) {
      * @param {Integer} val number to decrease score by
      */
     Score.prototype.decrease = function decrease (val) {
-        this.score = val ? this.score - val : --this.score;
-        this.element.innerHTML = this.score;
+        this.score = val ? this.score - val : this.score--;
+        this.elem.innerHTML = this.score;
         this.fire("scoreChange", { score: this.score });
     };
 

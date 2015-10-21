@@ -26,7 +26,7 @@ window.SAX.init = function init () {
     };
 
     games.memory = function () {
-        var logic = memory.logic(grid, utils, dom, events);
+        var logic = memory.logic(grid, score, utils, dom, events);
     };
 
     // This return is temp for DEBUGGING
