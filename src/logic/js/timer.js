@@ -1,4 +1,4 @@
-var grid = grid || {};
+var logic = logic || {};
 
 /**
  * Timer ALL the things
@@ -6,7 +6,7 @@ var grid = grid || {};
  * @module gridEl
  * @submodule timer
  */
-grid.timer = function timer (window, document, events) {
+logic.timer = function timer (window, document, events) {
 
     /**
      * How often the interval is restarted

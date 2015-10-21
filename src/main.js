@@ -1,4 +1,4 @@
-// SAX namespace...It's a Metroid thing
+// It's a Metroid thing
 window.SAX = window.SAX || {};
 
 /**
@@ -9,24 +9,24 @@ window.SAX = window.SAX || {};
  */
 window.SAX.init = function init () {
     // Allow lazy load of games
-    var games = {};
+    var games   = {};
 
     // Core modules
-    var utils = core.Utils(window, document);
-    var dom = core.Dom(window, document, utils);
-    var events = core.Events(window, document, utils, dom);
-    
+    var utils   = core.Utils(window, document);
+    var dom     = core.Dom(window, document, utils);
+    var events  = core.Events(window, document, utils, dom);
+
     // Logic modules
-    var gridUnit = grid.gridInstance(window, document, utils, dom, events);
-    var timerUnit = grid.timer(window, document, events);
-    var scoreUnit = grid.score(window, document, events);
+    var grid    = logic.grid(window, document, utils, dom, events);
+    var timer   = logic.timer(window, document, events);
+    var score   = logic.score(window, document, events);
 
     games.grid = function () {
-        var logic = theGrid.logic(gridUnit, timerUnit, utils, dom, events);
+        var logic = theGrid.logic(grid, timer, utils, dom, events);
     };
 
     games.memory = function () {
-        var logic = memory.logic(gridUnit, utils, dom, events);
+        var logic = memory.logic(grid, utils, dom, events);
     };
 
     // This return is temp for DEBUGGING
@@ -35,8 +35,8 @@ window.SAX.init = function init () {
         utils: utils,
         dom: dom,
         events: events,
-        gridUnit: gridUnit,
-        timerUnit: timerUnit,
+        grid: grid,
+        timer: timer,
         games: games
     };
 };
@@ -52,4 +52,4 @@ window.SAX.init = function init () {
 // div.left = "10px";
 // document.body.appendChild(div);
 //
-// var timer = program.timerUnit.createTimer({seconds:100, element:div});
+// var timer = program.timer.createTimer({seconds:100, element:div});

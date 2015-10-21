@@ -1,6 +1,6 @@
-var grid = grid || {};
+var logic = logic || {};
 
-grid.score = function score (window, document, events) {
+logic.score = function score (window, document, events) {
 
     /**
      * Default score to set if none defined

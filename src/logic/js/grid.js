@@ -1,4 +1,4 @@
-var grid = grid || {};
+var logic = logic || {};
 
 /**
  * Grid ALL the things
@@ -6,7 +6,7 @@ var grid = grid || {};
  * @module Grid
  * @submodule gridInstance
  */
-grid.gridInstance = function gridInstance (window, document, utils, dom, events) {
+logic.grid = function gridInstance (window, document, utils, dom, events) {
 
     /**
      * Store the last randomly selected cell
@@ -28,7 +28,7 @@ grid.gridInstance = function gridInstance (window, document, utils, dom, events)
         this.color  = options.color;
         this.border = options.border;
         this.holderEl = options.holderEl;
-        
+
         // Allow object to fire custom events
         events.watch(this);
     }
@@ -40,6 +40,8 @@ grid.gridInstance = function gridInstance (window, document, utils, dom, events)
      * @returns {Node}
      */
     Grid.prototype.build = function build () {
+        var self = this;
+
         this.grid = dom.create("table");
 
         for (var i = 0; i < this.rows; i++) {
@@ -51,7 +53,13 @@ grid.gridInstance = function gridInstance (window, document, utils, dom, events)
         }
 
         this.grid.id = "grid";
-        // TODO Bind events
+
+        function fireClick (event) {
+            self.fire("gridClick", event);
+        }
+
+        events.bind(this.grid, "click", fireClick);
+
         this.holderEl.appendChild(this.grid);
     };
 
@@ -116,7 +124,6 @@ grid.gridInstance = function gridInstance (window, document, utils, dom, events)
     };
 
     Grid.prototype.destroy = function destroy () {
-        // TODO: Remove events
         dom.destroy(this.grid);
     };
 
