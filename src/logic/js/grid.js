@@ -6,7 +6,7 @@ var logic = logic || {};
  * @module Grid
  * @submodule gridInstance
  */
-logic.grid = function gridInstance (window, document, utils, dom, events) {
+logic.grid = function grid (window, document, utils, dom, events) {
 
     /**
      * Store the last randomly selected cell

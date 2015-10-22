@@ -2,6 +2,12 @@ var memory = memory || {};
 
 memory.logic = function logic (grid, score, utils, dom, events) {
 
+    /**
+     * Memory game constructor/initialiser
+     *
+     * @constructor
+     * @function Memory
+     */
     function Memory () {
         var self = this;
 
@@ -43,12 +49,13 @@ memory.logic = function logic (grid, score, utils, dom, events) {
      * @method AISelection
      */
     Memory.prototype.AIselection = function AIselection () {
+        var self = this;
 
         function onlyUniques () {
-            var random = this.grid.getRandomCell();
+            var random = self.grid.getRandomCell();
 
-            if (this.AI.indexOf(random) === -1) {
-                this.AI.push(random);
+            if (self.AI.indexOf(random) === -1) {
+                self.AI.push(random);
             } else {
                 onlyUniques();
             }
@@ -96,12 +103,10 @@ memory.logic = function logic (grid, score, utils, dom, events) {
     };
 
     Memory.prototype.handleClick = function handleClick (event) {
-        this.clicks++;
-
         this.playerSelection(event.target);
 
         // Return if not enough player inputs
-        if (this.player.length < this.rememberCount) {
+        if (this.player.length !== this.rememberCount) {
             return;
         }
 
