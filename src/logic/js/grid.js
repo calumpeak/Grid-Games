@@ -9,14 +9,6 @@ var logic = logic || {};
 logic.grid = function grid (window, document, utils, dom, events) {
 
     /**
-     * Store the last randomly selected cell
-     * Prevent hitting it twice in a row
-     *
-     * @constant
-     */
-    var LAST_RNDM_CELL;
-
-    /**
      * Grid constructor
      *
      * @constructor
@@ -26,6 +18,8 @@ logic.grid = function grid (window, document, utils, dom, events) {
         this.rows   = options.rows;
         this.cols   = options.cols;
         this.elem = options.elem;
+        
+        this.lastRandomCell;
 
         // Allow object to fire custom events
         events.watch(this);
@@ -94,16 +88,17 @@ logic.grid = function grid (window, document, utils, dom, events) {
      * @returns {Node} td Cell on the grid
      */
     Grid.prototype.getRandomCell = function getRandomCell () {
+        var self = this;
         var gridCell = this.grid.getElementsByTagName("td");
 
         function getRandom () {
             var random = gridCell[Math.floor(Math.random() * gridCell.length)];
 
-            if (random === LAST_RNDM_CELL) {
+            if (random === self.lastRandomCell) {
                 getRandom();
             }
 
-            LAST_RNDM_CELL = random;
+            self.lastRandomCell = random;
 
             return random;
         }

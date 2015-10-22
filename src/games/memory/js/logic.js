@@ -9,14 +9,12 @@ memory.logic = function logic (grid, score, utils, dom, events) {
      * @function Memory
      */
     function Memory () {
-        var self = this;
-
-        // Allow custom event fire
+        // Custom events
         events.watch(this);
 
         // TODO necessary elements to be on the page
         // Setup the playingfield
-        this.grid = grid.createGrid( {rows: 5, cols: 5, elem: undefined} );
+        this.grid = grid.createGrid( {rows: 3, cols: 3, elem: undefined} );
         this.score = grid.createScore( {elem: undefined} );
 
         // Data input store
@@ -28,13 +26,7 @@ memory.logic = function logic (grid, score, utils, dom, events) {
         this.rememberCount = 2;
 
         //Manage events
-        this.grid.on("gridClick", function (event) {
-            self.handleClick(event);
-        });
-
-        this.score.on("scoreChange", function (data) {
-            self.handleScore(data);
-        });
+        this.handleEvents();
     }
 
     /**
@@ -64,6 +56,8 @@ memory.logic = function logic (grid, score, utils, dom, events) {
         for (var i = 0; i < this.rememberCount; i++) {
             onlyUniques();
         }
+
+        this.fire("AIReady");
     };
 
     /**
@@ -75,6 +69,19 @@ memory.logic = function logic (grid, score, utils, dom, events) {
      */
     Memory.prototype.playerSelection = function playerSelection (cell) {
         this.player.push(cell);
+    };
+
+    /**
+     * Highlights cells on the grid based on `AIselection`
+     * Fades away ready for player input
+     *
+     * @for Memory
+     * @method highlightCells
+     */
+    Memory.prototype.highlightCells = function highlightCells () {
+        // Apply color class to button
+        // Transition them in
+        // Remove after x amount of time
     };
 
     /**
@@ -115,12 +122,39 @@ memory.logic = function logic (grid, score, utils, dom, events) {
     };
 
     /**
-     * Increase difficulty every 5 points
+     * Increase difficulty every 3 points
      * Grow the grid by 2 rows/cols
      * Increase rememberCount
      */
     Memory.prototype.handleScore = function handleScore (data) {
-        // Placeholder
+        var score = data.score;
+
+        if (score % 3 === 0) {
+            this.rememberCount++;
+            this.grid.grow(2, 2);
+        }
+    };
+
+    /**
+     * Central area to manage custom events fired by objects
+     *
+     * @for Memory
+     * @method handleEvents
+     */
+    Memory.prototype.handleEvents = function handleEvents () {
+        var self = this;
+
+        this.grid.on("gridClick", function (event) {
+            self.handleClick(event);
+        });
+
+        this.score.on("scoreChange", function (data) {
+            self.handleScore(data);
+        });
+
+        this.on("AIReady", function () {
+            self.highlightCells();
+        });
     };
 
     Memory.prototype.endGame = function endGame () {
