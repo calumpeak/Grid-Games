@@ -75,9 +75,10 @@ memory.logic = function logic (grid, score, utils, dom, events) {
      *
      * @for Memory
      * @method compare
+     * @returns {Boolean}
      */
     Memory.prototype.compare = function compare () {
-        //return !!utils.compareArray(this.AI, this.player);
+        return !!utils.compareArrays(this.AI, this.player);
     };
 
     /**
