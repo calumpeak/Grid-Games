@@ -57,7 +57,7 @@ memory.logic = function logic (grid, score, utils, dom, events) {
             onlyUniques();
         }
 
-        this.fire("AIReady");
+        this.highlightCells();
     };
 
     /**
@@ -79,9 +79,13 @@ memory.logic = function logic (grid, score, utils, dom, events) {
      * @method highlightCells
      */
     Memory.prototype.highlightCells = function highlightCells () {
-        // Apply color class to button
-        // Transition them in
-        // Remove after x amount of time
+        // TODO transition in order
+        // TODO individual colours (material design)
+        this.AI.forEach(function (index) {
+            index.style.backgroundColor = "#536DFE";
+        });
+
+        this.fire("AIDone");
     };
 
     /**
@@ -106,7 +110,6 @@ memory.logic = function logic (grid, score, utils, dom, events) {
     Memory.prototype.refresh = function refresh () {
         this.AI = [];
         this.player = [];
-        this.grid.refresh();
     };
 
     Memory.prototype.handleClick = function handleClick (event) {
@@ -152,8 +155,8 @@ memory.logic = function logic (grid, score, utils, dom, events) {
             self.handleScore(data);
         });
 
-        this.on("AIReady", function () {
-            self.highlightCells();
+        this.on("AIDone", function () {
+            // Placeholder
         });
     };
 
