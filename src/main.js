@@ -22,11 +22,13 @@ window.SAX.init = function init () {
     var score   = logic.score(window, document, events);
 
     games.grid = function () {
-        var logic = theGrid.logic(grid, timer, utils, dom, events);
+        var page    = theGrid.page(dom);
+        var logic   = theGrid.logic(grid, timer, score, page, utils, dom, events);
     };
 
     games.memory = function () {
-        var logic = memory.logic(grid, score, utils, dom, events);
+        var page    = memory.page(dom);
+        var logic   = memory.logic(grid, score, page, utils, dom, events);
     };
 
     // This return is temp for DEBUGGING

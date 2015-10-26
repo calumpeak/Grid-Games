@@ -1,6 +1,13 @@
 var memory = memory || {};
 
-memory.logic = function logic (grid, score, utils, dom, events) {
+memory.logic = function logic (grid, score, page, utils, dom, events) {
+
+    /**
+     * Starting number for build elements
+     *
+     * @constant
+     */
+    var BASE_NUM = 3;
 
     /**
      * Memory game constructor/initialiser
@@ -12,18 +19,17 @@ memory.logic = function logic (grid, score, utils, dom, events) {
         // Custom events
         events.watch(this);
 
-        // TODO necessary elements to be on the page
         // Setup the playingfield
-        this.grid = grid.createGrid( {rows: 3, cols: 3, elem: undefined} );
-        this.score = grid.createScore( {elem: undefined} );
+        this.page   = page.createPage();
+        this.grid   = grid.createGrid( {rows: BASE_NUM, cols: BASE_NUM, elem: page.holder} );
+        this.score  = score.createScore( {elem: page.score} );
 
         // Data input store
-        this.AI = [];
+        this.AI     = [];
         this.player = [];
 
         // Number of cells to remember
-        // Will be increased during play
-        this.rememberCount = 2;
+        this.rememberCount = BASE_NUM;
 
         //Manage events
         this.handleEvents();
@@ -100,7 +106,7 @@ memory.logic = function logic (grid, score, utils, dom, events) {
     };
 
     /**
-     * Whilst in game, we need to reset these values
+     * Whilst in game, we need to reset these values for the next turn
      * Clears all AI and player choices
      * Clears the grid of current choices
      *
@@ -108,7 +114,7 @@ memory.logic = function logic (grid, score, utils, dom, events) {
      * @method refresh
      */
     Memory.prototype.refresh = function refresh () {
-        this.AI = [];
+        this.AI     = [];
         this.player = [];
     };
 
@@ -162,6 +168,7 @@ memory.logic = function logic (grid, score, utils, dom, events) {
 
     Memory.prototype.endGame = function endGame () {
         // Placeholder
+        // Show splash screen
     };
 
     // TODO: Update placeholder

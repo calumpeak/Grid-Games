@@ -52,6 +52,19 @@ core.Dom = function Dom (window, document, utils) {
     }
 
     /**
+     * Appends an array of elements to the dom
+     *
+     * @public
+     * @method append
+     * @param {Array} array
+     */
+    function append (array) {
+        array.forEach(function (element) {
+            document.body.appendChild(element);
+        });
+    }
+
+    /**
      * Get an elements computed styles
      *
      * @method getStyle
@@ -79,6 +92,7 @@ core.Dom = function Dom (window, document, utils) {
         create: create,
         destroy: destroy,
         build: build,
+        append: append,
         getStyle: getStyle,
         getRect: getRect
     };
