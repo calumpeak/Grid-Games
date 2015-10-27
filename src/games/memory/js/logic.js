@@ -1,5 +1,11 @@
 var memory = memory || {};
 
+/**
+ * Score ALL the things
+ *
+ * @module memory
+ * @submodule Logic
+ */
 memory.logic = function logic (grid, score, page, utils, dom, events) {
 
     /**

@@ -1,5 +1,11 @@
 var logic = logic || {};
 
+/**
+ * score logic
+ *
+ * @module Logic
+ * @submodule Score
+ */
 logic.score = function score (window, document, events) {
 
     /**

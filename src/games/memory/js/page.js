@@ -2,6 +2,9 @@ var memory = memory || {};
 
 /**
  * Creates the page elements for the game
+ *
+ * @module memory
+ * @submodule page
  */
 memory.page = function page (dom) {
 

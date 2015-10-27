@@ -2,6 +2,9 @@ var theGrid = theGrid || {};
 
 /**
  * Creates the page elements for the game
+ *
+ * @module theGrid
+ * @submodule page
  */
 theGrid.page = function page (dom) {
 
