@@ -21,6 +21,10 @@ window.SAX.init = function init () {
     var timer   = logic.timer(window, document, events);
     var score   = logic.score(window, document, events);
 
+    // Bootstrap
+    var application = bootstrap.app(window);
+
+    // Games
     games.grid = function () {
         var page    = theGrid.page(dom);
         var logic   = theGrid.logic(grid, timer, score, page, utils, dom, events);
@@ -29,21 +33,30 @@ window.SAX.init = function init () {
     games.memory = function () {
         var page    = memory.page(dom);
         var logic   = memory.logic(grid, score, page, utils, dom, events);
+
+        return logic.run();
     };
+
+    // Kick off
+    application.run(games);
+
 
     // This return is temp for DEBUGGING
     // Gives access point into modules from console
-    return {
-        utils: utils,
-        dom: dom,
-        events: events,
-        grid: grid,
-        timer: timer,
-        games: games
-    };
+    // return {
+    //     utils: utils,
+    //     dom: dom,
+    //     events: events,
+    //     grid: grid,
+    //     timer: timer,
+    //     games: games
+    // };
 };
 
+
+
 /* FOR DEBUG TODO: Remove */
+SAX.init();
 // var program = SAX.init();
 //
 // var div = document.createElement('div');

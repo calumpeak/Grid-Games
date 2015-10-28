@@ -8,6 +8,7 @@
     "globals": {
         "core": true,
         "logic": true,
+        "bootstrap": true,
         "theGrid": true,
         "memory": true
     }

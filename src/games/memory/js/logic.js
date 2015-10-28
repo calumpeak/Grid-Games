@@ -13,7 +13,7 @@ memory.logic = function logic (grid, score, page, utils, dom, events) {
      *
      * @constant
      */
-    var BASE_NUM = 3;
+    var START_NUM = 3;
 
     /**
      * Memory game constructor/initialiser
@@ -27,18 +27,30 @@ memory.logic = function logic (grid, score, page, utils, dom, events) {
 
         // Setup the playingfield
         this.page   = page.createPage();
-        this.grid   = grid.createGrid( {rows: BASE_NUM, cols: BASE_NUM, elem: page.holder} );
-        this.score  = score.createScore( {elem: page.score} );
+        this.grid   = grid.createGrid({
+            rows: START_NUM,
+            cols: START_NUM,
+            elem: this.page.holder
+        });
+        this.score  = score.createScore({
+            elem: this.page.score
+        });
+
+        //Build Grid
+        // TODO: Move this
+        this.grid.build();
 
         // Data input store
         this.AI     = [];
         this.player = [];
 
         // Number of cells to remember
-        this.rememberCount = BASE_NUM;
+        this.rememberCount = START_NUM;
 
         //Manage events
         this.handleEvents();
+
+        this.AIselection();
     }
 
     /**
@@ -180,6 +192,9 @@ memory.logic = function logic (grid, score, page, utils, dom, events) {
     // TODO: Update placeholder
     function run () {
         //run the game
+
+        //TEMPORARY//
+        return new Memory();
     }
 
     return {

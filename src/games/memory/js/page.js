@@ -24,10 +24,23 @@ memory.page = function page (dom) {
         this.messages = dom.create("div");
         this.messages.id = "memoryMessages";
 
+        this.nodes = [this.score, this.holder, this.messages];
+
         // Append elements to the dom
-        dom.append( [this.score, this.holder, this.messages] );
+        dom.append(this.nodes);
     }
 
+    /**
+     * Remove page elements from Dom
+     *
+     * @for Page
+     * @method remove
+     */
+    Page.prototype.remove = function remove () {
+        this.nodes.forEach(function (element) {
+            dom.destroy(element);
+        });
+    };
 
     function createPage () {
         return new Page();
