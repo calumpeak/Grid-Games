@@ -18,7 +18,7 @@ logic.grid = function grid (window, document, utils, dom, events) {
         this.rows   = options.rows;
         this.cols   = options.cols;
         this.elem = options.elem;
-        
+
         this.lastRandomCell;
 
         // Allow object to fire custom events
@@ -32,15 +32,17 @@ logic.grid = function grid (window, document, utils, dom, events) {
      * @returns {Node}
      */
     Grid.prototype.build = function build () {
-        var self = this;
-
-        this.grid = dom.create("table");
+        var self    = this;
+        var count   = 0;
+        
+        this.grid   = dom.create("table");
 
         for (var i = 0; i < this.rows; i++) {
             var tr = dom.build(this.grid, dom.create("tr"));
 
             for (var j = 0; j < this.cols; j++) {
                 var td = dom.build(tr, dom.create("td"));
+                td.id = ++count;
             }
         }
 

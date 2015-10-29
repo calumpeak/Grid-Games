@@ -36,10 +36,6 @@ memory.logic = function logic (grid, score, page, utils, dom, events) {
             elem: this.page.score
         });
 
-        //Build Grid
-        // TODO: Move this
-        this.grid.build();
-
         // Data input store
         this.AI     = [];
         this.player = [];
@@ -50,7 +46,7 @@ memory.logic = function logic (grid, score, page, utils, dom, events) {
         //Manage events
         this.handleEvents();
 
-        this.AIselection();
+        this.fire("Ready");
     }
 
     /**
@@ -80,7 +76,7 @@ memory.logic = function logic (grid, score, page, utils, dom, events) {
         for (var i = 0; i < this.rememberCount; i++) {
             onlyUniques();
         }
-
+        console.log(this.AI);
         this.highlightCells();
     };
 
@@ -120,7 +116,11 @@ memory.logic = function logic (grid, score, page, utils, dom, events) {
      * @returns {Boolean}
      */
     Memory.prototype.compare = function compare () {
-        return !!utils.compareArrays(this.AI, this.player);
+        var self = this;
+
+        return this.AI.every(function (element, index) {
+            return element.isEqualNode(self.player[index]);
+        });
     };
 
     /**
@@ -134,10 +134,12 @@ memory.logic = function logic (grid, score, page, utils, dom, events) {
     Memory.prototype.refresh = function refresh () {
         this.AI     = [];
         this.player = [];
+        this.grid.refresh();
+        this.AIselection();
     };
 
     Memory.prototype.handleClick = function handleClick (event) {
-        this.playerSelection(event.target);
+        this.playerSelection(event.data.target);
 
         // Return if not enough player inputs
         if (this.player.length !== this.rememberCount) {
@@ -179,6 +181,10 @@ memory.logic = function logic (grid, score, page, utils, dom, events) {
             self.handleScore(data);
         });
 
+        this.on("Ready", function () {
+            self.launch();
+        });
+
         this.on("AIDone", function () {
             // Placeholder
         });
@@ -187,6 +193,17 @@ memory.logic = function logic (grid, score, page, utils, dom, events) {
     Memory.prototype.endGame = function endGame () {
         // Placeholder
         // Show splash screen
+    };
+
+    /**
+     * Launch the Game
+     *
+     * @for memory
+     * @method launch
+     */
+    Memory.prototype.launch = function launch () {
+        this.grid.build();
+        this.AIselection();
     };
 
     // TODO: Update placeholder
