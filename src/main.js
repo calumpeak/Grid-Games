@@ -8,7 +8,7 @@ window.SAX = window.SAX || {};
  * @submodule init
  */
 window.SAX.init = function init () {
-    // Allow lazy load of games
+    // Lazy load
     var games   = {};
 
     // Core modules
@@ -41,31 +41,7 @@ window.SAX.init = function init () {
     // Kick off
     application.run(games);
 
-
-    // This return is temp for DEBUGGING
-    // Gives access point into modules from console
-    // return {
-    //     utils: utils,
-    //     dom: dom,
-    //     events: events,
-    //     grid: grid,
-    //     timer: timer,
-    //     games: games
-    // };
 };
-
-
 
 /* FOR DEBUG TODO: Remove */
 SAX.init();
-// var program = SAX.init();
-//
-// var div = document.createElement('div');
-// div.style.width = "100px";
-// div.style.height = "100px";
-// div.style.position = "fixed";
-// div.top = "10px";
-// div.left = "10px";
-// document.body.appendChild(div);
-//
-// var timer = program.timer.createTimer({seconds:100, element:div});

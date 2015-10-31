@@ -21,7 +21,34 @@ core.Utils = function Utils (window, document) {
         return obj[keys[ keys.length * Math.random() << 0]];
     }
 
+    /**
+     * Sets a timeout and fires a callback after time
+     *
+     * @function timeout
+     * @param {Function} callback
+     * @returns {Function} setTimeout
+     */
+    function timeout (callback, time) {
+        return window.setTimeout(callback, time);
+    }
+
+    /**
+     * Fires a callback when the last index of an array is processed
+     *
+     * @function atlastIndex
+     * @param {Array} Array
+     * @param {Integer} index
+     * @param {Callback}
+     */
+    function onLastIndex (array, index, callback) {
+        if (array.length === index + 1) {
+            callback();
+        }
+    }
+
     return {
-        randomProperty: randomProperty
+        randomProperty: randomProperty,
+        timeout: timeout,
+        onLastIndex: onLastIndex
     };
 };

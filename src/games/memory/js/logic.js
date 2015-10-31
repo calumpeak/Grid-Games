@@ -13,7 +13,14 @@ memory.logic = function logic (grid, score, page, decor, utils, dom, events) {
      *
      * @constant
      */
-    var START_NUM = 3;
+    var START_NUM   = 3;
+
+    /**
+     * Interval for timeouts in ms
+     *
+     * @constant
+     */
+    var INTERVAL    = 750;
 
     /**
      * Memory game constructor/initialiser
@@ -75,7 +82,7 @@ memory.logic = function logic (grid, score, page, decor, utils, dom, events) {
             }
         }
 
-        for (var i = 0; i < this.rememberCount; i++) {
+        for (var i = 0; i < this.rememberCount; ++i) {
             onlyUniques();
         }
 
@@ -95,9 +102,8 @@ memory.logic = function logic (grid, score, page, decor, utils, dom, events) {
 
     /**
      * Highlights cells on the grid based on `AIselection`
-     * Fades away ready for player input
-     *
-     * TODO: Fade colours in slowly
+     * Gets random colours from library for each tile
+     * Fires message on completion
      *
      * @for Memory
      * @method highlightCells
@@ -107,11 +113,17 @@ memory.logic = function logic (grid, score, page, decor, utils, dom, events) {
 
         this.colours = this.decor.getRandomColours(this.AI.length);
 
-        this.AI.forEach(function (element, index) {
-            element.style.backgroundColor = self.colours[index];
-        });
+        this.AI.forEach(function (element, index, array) {
+            function sequence () {
+                element.style.backgroundColor = self.colours[index];
 
-        this.fire("AIDone");
+                utils.onLastIndex(array, index, function () {
+                    self.fire("AIDone");
+                });
+            }
+
+            utils.timeout(sequence, index * INTERVAL);
+        });
     };
 
     /**
@@ -153,7 +165,7 @@ memory.logic = function logic (grid, score, page, decor, utils, dom, events) {
         }
 
         // Compare the results
-        this.compare() ? this.score.increase() : this.endGame();
+        this.compare() ? this.score.increase() : this.score.decrease();
     };
 
     /**
@@ -161,13 +173,13 @@ memory.logic = function logic (grid, score, page, decor, utils, dom, events) {
      * Grow the grid by 2 rows/cols
      * Increase rememberCount
      */
-    Memory.prototype.handleScore = function handleScore (data) {
-        var score = data.score;
-
-        if (score % 3 === 0) {
-            this.rememberCount++;
+    Memory.prototype.handleScore = function handleScore (event) {
+        if (event.data.score % 3 === 0) {
+            ++this.rememberCount;
             this.grid.grow(2, 2);
         }
+
+        this.refresh();
     };
 
     /**
@@ -183,8 +195,8 @@ memory.logic = function logic (grid, score, page, decor, utils, dom, events) {
             self.handleClick(event);
         });
 
-        this.score.on("scoreChange", function (data) {
-            self.handleScore(data);
+        this.score.on("scoreChange", function (event) {
+            self.handleScore(event);
         });
 
         this.on("Ready", function () {

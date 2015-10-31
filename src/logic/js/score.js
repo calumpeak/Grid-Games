@@ -39,7 +39,7 @@ logic.score = function score (window, document, events) {
      * @param {Integer} val number to increase score by
      */
     Score.prototype.increase = function increase (val) {
-        this.score = val ? this.score + val : this.score++;
+        val ? this.score + val : ++this.score;
         this.elem.innerHTML = this.score;
         this.fire("scoreChange", { score: this.score });
     };
@@ -52,7 +52,7 @@ logic.score = function score (window, document, events) {
      * @param {Integer} val number to decrease score by
      */
     Score.prototype.decrease = function decrease (val) {
-        this.score = val ? this.score - val : this.score--;
+        val ? this.score - val : ++this.score;
         this.elem.innerHTML = this.score;
         this.fire("scoreChange", { score: this.score });
     };
