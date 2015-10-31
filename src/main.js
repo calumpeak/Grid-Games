@@ -20,6 +20,7 @@ window.SAX.init = function init () {
     var grid    = logic.grid(window, document, utils, dom, events);
     var timer   = logic.timer(window, document, events);
     var score   = logic.score(window, document, events);
+    var decor   = logic.decoration(window, document, utils, dom);
 
     // Bootstrap
     var application = bootstrap.app(window);
@@ -32,7 +33,7 @@ window.SAX.init = function init () {
 
     games.memory = function () {
         var page    = memory.page(dom);
-        var logic   = memory.logic(grid, score, page, utils, dom, events);
+        var logic   = memory.logic(grid, score, page, decor, utils, dom, events);
 
         return logic.run();
     };

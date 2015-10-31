@@ -19,7 +19,7 @@ var bootstrap = bootstrap || {};
 
         //TEMPORARY//
         window.addEventListener("load", function () {
-            apps["memory"]();
+            apps.memory();
         });
     }
 

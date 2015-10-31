@@ -6,7 +6,7 @@ var memory = memory || {};
  * @module memory
  * @submodule Logic
  */
-memory.logic = function logic (grid, score, page, utils, dom, events) {
+memory.logic = function logic (grid, score, page, decor, utils, dom, events) {
 
     /**
      * Starting number for build elements
@@ -27,6 +27,7 @@ memory.logic = function logic (grid, score, page, utils, dom, events) {
 
         // Setup the playingfield
         this.page   = page.createPage();
+        this.decor  = decor.createDecor();
         this.grid   = grid.createGrid({
             rows: START_NUM,
             cols: START_NUM,
@@ -56,6 +57,7 @@ memory.logic = function logic (grid, score, page, utils, dom, events) {
      * Avoid selecting same cell that's been stored earlier
      *
      * TODO: throw error if more cells than remember count
+     * TODO: make non-blocking
      *
      * @for Memory
      * @method AISelection
@@ -76,7 +78,7 @@ memory.logic = function logic (grid, score, page, utils, dom, events) {
         for (var i = 0; i < this.rememberCount; i++) {
             onlyUniques();
         }
-        console.log(this.AI);
+
         this.highlightCells();
     };
 
@@ -95,14 +97,18 @@ memory.logic = function logic (grid, score, page, utils, dom, events) {
      * Highlights cells on the grid based on `AIselection`
      * Fades away ready for player input
      *
+     * TODO: Fade colours in slowly
+     *
      * @for Memory
      * @method highlightCells
      */
     Memory.prototype.highlightCells = function highlightCells () {
-        // TODO transition in order
-        // TODO individual colours (material design)
-        this.AI.forEach(function (index) {
-            index.style.backgroundColor = "#536DFE";
+        var self = this;
+
+        this.colours = this.decor.getRandomColours(this.AI.length);
+
+        this.AI.forEach(function (element, index) {
+            element.style.backgroundColor = self.colours[index];
         });
 
         this.fire("AIDone");

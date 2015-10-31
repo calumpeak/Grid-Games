@@ -6,9 +6,11 @@
     "undef": true,
     "browser": true,
     "globals": {
+        "SAX": true,
         "core": true,
         "logic": true,
         "bootstrap": true,
+        "library": true,
         "theGrid": true,
         "memory": true
     }

@@ -34,7 +34,7 @@ logic.grid = function grid (window, document, utils, dom, events) {
     Grid.prototype.build = function build () {
         var self    = this;
         var count   = 0;
-        
+
         this.grid   = dom.create("table");
 
         for (var i = 0; i < this.rows; i++) {
