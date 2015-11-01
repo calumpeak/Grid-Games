@@ -65,6 +65,18 @@ core.Dom = function Dom (window, document, utils) {
     }
 
     /**
+     * Sets a specific style property on an element
+     *
+     * @function setStyle
+     * @param {Node} element dom Node
+     * @param {String} property css property
+     * @param {String} attribute css attribute to the above property
+     */
+    function setStyle (element, property, attribute) {
+        element.style[property] = attribute;
+    }
+
+    /**
      * Get an elements computed styles
      *
      * @method getStyle
@@ -93,6 +105,7 @@ core.Dom = function Dom (window, document, utils) {
         destroy: destroy,
         build: build,
         append: append,
+        setStyle: setStyle,
         getStyle: getStyle,
         getRect: getRect
     };

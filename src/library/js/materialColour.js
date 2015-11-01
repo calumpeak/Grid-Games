@@ -8,6 +8,7 @@ var library = library || {};
  *
  * @module library
  * @submodule colours
+ * @returns {Object}
  */
 library.MaterialColour = function MaterialColour () {
 

@@ -23,6 +23,14 @@ memory.logic = function logic (grid, score, page, decor, utils, dom, events) {
     var INTERVAL    = 750;
 
     /**
+     * CSS prroperty used throughout
+     * Used a lot. Store it.
+     *
+     * @constant
+     */
+    var PROPERTY    = "backgroundColor";
+
+    /**
      * Memory game constructor/initialiser
      *
      * @constructor
@@ -92,6 +100,7 @@ memory.logic = function logic (grid, score, page, decor, utils, dom, events) {
 
     /**
      * Store the players selection
+     * Colour that selection to AI selections
      *
      * @for Memory
      * @method playerSelection
@@ -99,6 +108,7 @@ memory.logic = function logic (grid, score, page, decor, utils, dom, events) {
      */
     Memory.prototype.playerSelection = function playerSelection (cell) {
         this.player.push(cell);
+        dom.setStyle(cell, PROPERTY, this.colours[this.player.length - 1]);
     };
 
     /**
@@ -117,8 +127,7 @@ memory.logic = function logic (grid, score, page, decor, utils, dom, events) {
 
         this.AI.forEach(function (element, index, array) {
             function showSequence () {
-                element.style.backgroundColor = self.colours[index];
-
+                dom.setStyle(element, PROPERTY, self.colours[index]);
                 utils.onLastIndex(array, index, function () {
                     self.hideCells();
                 });
@@ -143,8 +152,7 @@ memory.logic = function logic (grid, score, page, decor, utils, dom, events) {
 
         this.AI.forEach(function (element, index, array) {
             function hide () {
-                element.style.backgroundColor = "transparent";
-
+                dom.setStyle(element, PROPERTY, "transparent");
                 utils.onLastIndex(array, index, function () {
                     self.fire("AIDone");
                 });
@@ -252,7 +260,12 @@ memory.logic = function logic (grid, score, page, decor, utils, dom, events) {
         this.AIselection();
     };
 
-    // TODO: Update placeholder
+    /**
+     * Run the logic/game
+     *
+     * @function run
+     * @returns {Function} Memory
+     */
     function run () {
         //run the game
 
