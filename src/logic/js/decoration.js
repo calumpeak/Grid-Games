@@ -6,11 +6,10 @@ var logic = logic || {};
  * @module Logic
  * @submodule decoration
  */
-logic.decoration = function decoration (window, document, utils, dom) {
+logic.decoration = function decoration (window, document, utils) {
 
     /**
      * Decoration constructor
-     *
      *
      * @constructor
      */

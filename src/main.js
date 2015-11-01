@@ -20,7 +20,7 @@ window.SAX.init = function init () {
     var grid    = logic.grid(window, document, utils, dom, events);
     var timer   = logic.timer(window, document, events);
     var score   = logic.score(window, document, events);
-    var decor   = logic.decoration(window, document, utils, dom);
+    var decor   = logic.decoration(window, document, utils);
 
     // Bootstrap
     var application = bootstrap.app(window);

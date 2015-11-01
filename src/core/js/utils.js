@@ -41,7 +41,7 @@ core.Utils = function Utils (window, document) {
      * @param {Callback}
      */
     function onLastIndex (array, index, callback) {
-        if (array.length === index + 1) {
+        if (array.length === ++index) {
             callback();
         }
     }

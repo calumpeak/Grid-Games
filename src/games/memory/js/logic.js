@@ -27,6 +27,7 @@ memory.logic = function logic (grid, score, page, decor, utils, dom, events) {
      *
      * @constructor
      * @function Memory
+     * @fires "Ready"
      */
     function Memory () {
         // Custom events
@@ -103,7 +104,8 @@ memory.logic = function logic (grid, score, page, decor, utils, dom, events) {
     /**
      * Highlights cells on the grid based on `AIselection`
      * Gets random colours from library for each tile
-     * Fires message on completion
+     * We store these colours for later use
+     * Triggers the reverse operation on completion
      *
      * @for Memory
      * @method highlightCells
@@ -114,15 +116,41 @@ memory.logic = function logic (grid, score, page, decor, utils, dom, events) {
         this.colours = this.decor.getRandomColours(this.AI.length);
 
         this.AI.forEach(function (element, index, array) {
-            function sequence () {
+            function showSequence () {
                 element.style.backgroundColor = self.colours[index];
+
+                utils.onLastIndex(array, index, function () {
+                    self.hideCells();
+                });
+            }
+
+            utils.timeout(showSequence, INTERVAL * index);
+        });
+    };
+
+    /**
+     * Hides all the cells that were selected by AI
+     * Makes backgroundColor transparent
+     * Delays hiding so player can memorise the order
+     * Fires "AIDone" on completion
+     *
+     * @for Memory
+     * @method hideCells
+     * @fires "AIDone"
+     */
+    Memory.prototype.hideCells = function hideCells () {
+        var self = this;
+
+        this.AI.forEach(function (element, index, array) {
+            function hide () {
+                element.style.backgroundColor = "transparent";
 
                 utils.onLastIndex(array, index, function () {
                     self.fire("AIDone");
                 });
             }
 
-            utils.timeout(sequence, index * INTERVAL);
+            utils.timeout(hide, INTERVAL);
         });
     };
 
