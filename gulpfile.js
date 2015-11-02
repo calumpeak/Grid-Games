@@ -3,6 +3,7 @@ var gulp    = require("gulp");
 var concat  = require("gulp-concat");
 var jscs    = require("gulp-jscs");
 var hint    = require("gulp-jshint");
+var yuiDoc  = require("gulp-yuidoc");
 
 // Other Modules
 var stream  = require("event-stream");
@@ -52,6 +53,12 @@ gulp.task("jscs", function () {
         .pipe(jscs("./.jscsrc"));
 });
 
+// yuiDoc
+gulp.task("yuidoc", function () {
+    return gulp.src(mainFiles)
+        .pipe(yuiDoc())
+        .pipe(gulp.dest("./docs/"));
+});
 
 // Watch for file changes - concatenate if so
 gulp.task("watch", ["concat"], function () {
