@@ -99,19 +99,6 @@ memory.logic = function logic (grid, score, page, decor, utils, dom, events) {
     };
 
     /**
-     * Store the players selection
-     * Colour that selection to AI selections
-     *
-     * @for Memory
-     * @method playerSelection
-     * @param {Node} cell
-     */
-    Memory.prototype.playerSelection = function playerSelection (cell) {
-        this.player.push(cell);
-        dom.setStyle(cell, PROPERTY, this.colours[this.player.length - 1]);
-    };
-
-    /**
      * Highlights cells on the grid based on `AIselection`
      * Gets random colours from library for each tile
      * We store these colours for later use
@@ -160,6 +147,19 @@ memory.logic = function logic (grid, score, page, decor, utils, dom, events) {
 
             utils.timeout(hide, INTERVAL);
         });
+    };
+
+    /**
+     * Store the players selection
+     * Colour selection to AI selections
+     *
+     * @for Memory
+     * @method playerSelection
+     * @param {Node} cell
+     */
+    Memory.prototype.playerSelection = function playerSelection (cell) {
+        this.player.push(cell);
+        dom.setStyle(cell, PROPERTY, this.colours[this.player.length - 1]);
     };
 
     /**

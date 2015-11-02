@@ -21,6 +21,7 @@ window.SAX.init = function init () {
     var timer   = logic.timer(window, document, events);
     var score   = logic.score(window, document, events);
     var decor   = logic.decoration(window, document, utils);
+    var message = logic.message(window, document, utils, dom, events);
 
     // Bootstrap
     var application = bootstrap.app(window);
