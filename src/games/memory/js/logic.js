@@ -50,7 +50,8 @@ memory.logic = function logic (grid, score, page, decor, utils, dom, events) {
             elem: this.page.holder
         });
         this.score  = score.createScore({
-            elem: this.page.score
+            elem: this.page.score,
+            lvlCap: START_NUM
         });
 
         // Data input store
@@ -205,12 +206,12 @@ memory.logic = function logic (grid, score, page, decor, utils, dom, events) {
     };
 
     /**
-     * Increase difficulty every 3 points
+     * Increase difficulty on level cap
      * Grow the grid by 2 rows/cols
      * Increase rememberCount
      */
     Memory.prototype.handleScore = function handleScore (event) {
-        if (event.data.score % 3 === 0) {
+        if (event.data.lvlCap) {
             ++this.rememberCount;
             this.grid.grow(2, 2);
         }

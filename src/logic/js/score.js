@@ -28,7 +28,10 @@ logic.score = function score (window, document, events) {
 
         this.elem = options.elem;
         this.score = options.score || DEFAULT_SCORE;
+        this.lvlCap = options.lvlCap;
         this.elem.innerHTML = this.score;
+
+        this.handleEvents();
     }
 
     /**
@@ -41,7 +44,7 @@ logic.score = function score (window, document, events) {
     Score.prototype.increase = function increase (val) {
         val ? this.score + val : ++this.score;
         this.elem.innerHTML = this.score;
-        this.fire("scoreChange", { score: this.score });
+        this.fire("score");
     };
 
     /**
@@ -52,9 +55,15 @@ logic.score = function score (window, document, events) {
      * @param {Integer} val number to decrease score by
      */
     Score.prototype.decrease = function decrease (val) {
-        val ? this.score - val : ++this.score;
+        val ? this.score - val : --this.score;
         this.elem.innerHTML = this.score;
-        this.fire("scoreChange", { score: this.score });
+        this.fire("score");
+    };
+
+    Score.prototype.checkScore = function checkScore () {
+        return this.score % this.lvlCap === 0 ?
+            this.fire("scoreChange", { score: this.score, lvlCap: true })
+                : this.fire("scoreChange", { score: this.score });
     };
 
     /**
@@ -66,6 +75,14 @@ logic.score = function score (window, document, events) {
      */
     Score.prototype.getScore = function getScore () {
         return this.score;
+    };
+
+    Score.prototype.handleEvents = function handleEvents () {
+        var self = this;
+
+        this.on("score", function () {
+            self.checkScore();
+        });
     };
 
     /**

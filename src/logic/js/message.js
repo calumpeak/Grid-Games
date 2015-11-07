@@ -50,5 +50,5 @@ logic.message = function message (window, document, utils, dom, events) {
 
     return {
         createMessages: createMessages
-    }
+    };
 };
