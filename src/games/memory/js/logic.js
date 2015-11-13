@@ -6,7 +6,7 @@ var memory = memory || {};
  * @module memory
  * @submodule Logic
  */
-memory.logic = function logic (grid, score, page, decor, utils, dom, events) {
+memory.logic = function logic (grid, score, page, inform, decor, utils, dom, events) {
 
     /**
      * Starting number for build elements
@@ -52,6 +52,11 @@ memory.logic = function logic (grid, score, page, decor, utils, dom, events) {
         this.score  = score.createScore({
             elem: this.page.score,
             lvlCap: START_NUM
+        });
+
+        inform.createInform({
+            elem: this.page.messages,
+            context: this
         });
 
         // Data input store

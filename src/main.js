@@ -34,7 +34,8 @@ window.SAX.init = function init () {
 
     games.memory = function () {
         var page    = memory.page(dom);
-        var logic   = memory.logic(grid, score, page, decor, utils, dom, events);
+        var inform  = memory.inform(message);
+        var logic   = memory.logic(grid, score, page, inform, decor, utils, dom, events);
 
         return logic.run();
     };

@@ -21,7 +21,9 @@ library.Messages = function Messages () {
         },
         score: {
             total: "You Scored ${SCORE}!!"
+        },
+        AI: {
+            done: "Your Turn"
         }
     };
-    
 };

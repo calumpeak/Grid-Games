@@ -26,8 +26,9 @@ logic.message = function message (window, document, utils, dom, events) {
      *
      * @for Messages
      * @method writeMessage
+     * @private
      */
-    Messages.prototype.writeMessage = function writeMessage (message) {
+    Messages.prototype._writeMessage = function writeMessage (message) {
         this.elem.innerHTML = message;
     };
 
@@ -36,12 +37,12 @@ logic.message = function message (window, document, utils, dom, events) {
      * e.g. "level.up" --> "Level Up!!"
      *
      * @for Messages
-     * @method showMessage
+     * @method show
      */
-    Messages.prototype.showMessage = function showMessage (key) {
+    Messages.prototype.show = function show (key) {
         key = key.split(".");
 
-        this.writeMessage(this.messages[key[0]][key[1]]);
+        this._writeMessage(this.messages[key[0]][key[1]]);
     };
 
     function createMessages (options) {
