@@ -122,11 +122,11 @@ logic.grid = function grid (window, document, utils, dom, events) {
         dom.destroy(this.grid);
     };
 
-    function createGrid (options) {
+    function create (options) {
         return new Grid(options);
     }
 
     return {
-        createGrid: createGrid
+        create: create
     };
 };

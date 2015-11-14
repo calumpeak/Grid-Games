@@ -144,11 +144,11 @@ logic.timer = function timer (window, document, events) {
         window.setTimeout(delay, time);
     };
 
-    function createTimer (options) {
+    function create (options) {
         return new Timer(options);
     }
 
     return {
-        createTimer: createTimer
+        create: create
     };
 };

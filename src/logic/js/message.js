@@ -45,11 +45,11 @@ logic.message = function message (window, document, utils, dom, events) {
         this._writeMessage(this.messages[key[0]][key[1]]);
     };
 
-    function createMessages (options) {
+    function create (options) {
         return new Messages(options);
     }
 
     return {
-        createMessages: createMessages
+        create: create
     };
 };

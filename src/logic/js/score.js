@@ -88,15 +88,15 @@ logic.score = function score (window, document, events) {
     /**
      * Create a new score instance
      *
-     * @function createScore
+     * @function create
      * @param {Object} options
      * @return {Object} instance of score Object
      */
-    function createScore (options) {
+    function create (options) {
         return new Score(options);
     }
 
     return {
-        createScore: createScore
+        create: create
     };
 };

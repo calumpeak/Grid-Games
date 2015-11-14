@@ -42,19 +42,19 @@ memory.logic = function logic (grid, score, page, inform, decor, utils, dom, eve
         events.watch(this);
 
         // Setup the playingfield
-        this.page   = page.createPage();
-        this.decor  = decor.createDecor();
-        this.grid   = grid.createGrid({
+        this.page   = page.create();
+        this.decor  = decor.create();
+        this.grid   = grid.create({
             rows: START_NUM,
             cols: START_NUM,
             elem: this.page.holder
         });
-        this.score  = score.createScore({
+        this.score  = score.create({
             elem: this.page.score,
             lvlCap: START_NUM
         });
 
-        inform.createInform({
+        inform.create({
             elem: this.page.messages,
             context: this
         });

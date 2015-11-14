@@ -49,11 +49,11 @@ logic.decoration = function decoration (window, document, utils) {
         return this.colours[colour][key];
     };
 
-    function createDecor () {
+    function create () {
         return new Decoration();
     }
 
     return {
-        createDecor: createDecor
+        create: create
     };
 };

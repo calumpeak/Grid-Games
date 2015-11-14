@@ -14,7 +14,9 @@ memory.inform = function inform (message) {
      * @constructor
      */
     function Inform (options) {
-        this.message = message.createMessages(options.elem);
+        this.message = message.create({
+            elem: options.elem
+        });
         this.context = options.context;
 
         this.bindMessages();
@@ -43,11 +45,11 @@ memory.inform = function inform (message) {
         });
     };
 
-    function createInform (options) {
+    function create (options) {
         return new Inform(options);
     }
 
     return {
-        createInform: createInform
+        create: create
     };
 };

@@ -20,11 +20,11 @@ var mainFiles = [
 gulp.task("concat", function () {
     // TODO duplication from above
     var js = [
-        "src/IIFEopen.js",      // IIFE open
-        "src/**/js/*.js",       // Core modules
-        "src/games/**/js/*.js", // games
-        "src/main.js",          // Main/init
-        "src/IIFEclose.js"      // IFFE close
+        "src/resource/IIFEopen.js", // IIFE open
+        "src/**/js/*.js",           // Core modules
+        "src/games/**/js/*.js",     // games
+        "src/main.js",              // Main/init
+        "src/resource/IIFEclose.js" // IFFE close
     ];
 
     var css = [

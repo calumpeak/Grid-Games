@@ -42,11 +42,11 @@ memory.page = function page (dom) {
         });
     };
 
-    function createPage () {
+    function create () {
         return new Page();
     }
 
     return {
-        createPage: createPage
+        create: create
     };
 };
