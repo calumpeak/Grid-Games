@@ -46,9 +46,14 @@ core.Utils = function Utils (window, document) {
         }
     }
 
+    function isArray(obj) {
+        return Array.isArray(obj);
+    }
+
     return {
         randomProperty: randomProperty,
         timeout: timeout,
-        onLastIndex: onLastIndex
+        onLastIndex: onLastIndex,
+        isArray: isArray
     };
 };

@@ -1,6 +1,6 @@
 var logic = logic || {};
 
-logic.page = function page (window, document, dom) {
+logic.page = function page (dom) {
     /**
      * Node for page elements
      *
@@ -32,9 +32,7 @@ logic.page = function page (window, document, dom) {
      * @method remove
      */
     Page.prototype.remove = function remove () {
-        this.nodes.forEach(function (element) {
-            dom.destroy(element);
-        });
+        dom.destroy(this.nodes);
     };
 
     function create (options) {

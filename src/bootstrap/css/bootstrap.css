@@ -1,0 +1,32 @@
+/*bootstrap css*/
+
+#startSplash {
+    width: 300px;
+	height: 285px;
+
+    margin: auto;
+	margin-top: 140px;
+	padding: 10px;
+	position: absolute;
+	top: 0; left: 0; bottom: 0; right: 0;
+	z-index: 150;
+	background-color: #455A64;
+	text-align: center;
+	border-radius: 5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+}
+
+.button {
+	margin: 10px auto;
+	position: relative;
+	text-align: center;
+	vertical-align: middle;
+    width: 100px;
+	top: 0; left: 0; bottom: 0; right: 0;
+	background-color: #536DFE;
+	border-radius: 5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	cursor: pointer;
+}

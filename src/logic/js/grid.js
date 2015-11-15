@@ -6,7 +6,7 @@ var logic = logic || {};
  * @module Grid
  * @submodule gridInstance
  */
-logic.grid = function grid (window, document, utils, dom, events) {
+logic.grid = function grid (utils, dom, events) {
 
     /**
      * Grid constructor

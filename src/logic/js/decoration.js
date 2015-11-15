@@ -6,7 +6,7 @@ var logic = logic || {};
  * @module Logic
  * @submodule decoration
  */
-logic.decoration = function decoration (window, document, utils) {
+logic.decoration = function decoration (utils) {
 
     /**
      * Decoration constructor

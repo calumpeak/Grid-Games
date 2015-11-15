@@ -6,7 +6,7 @@ var logic = logic || {};
  * @module logic
  * @submodule Message
  */
-logic.message = function message (window, document, utils, dom, events) {
+logic.message = function message (utils, dom, events) {
 
     /**
      * Messages constructor

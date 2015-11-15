@@ -6,7 +6,7 @@ var logic = logic || {};
  * @module gridEl
  * @submodule timer
  */
-logic.timer = function timer (window, document, events) {
+logic.timer = function timer (window, events) {
 
     /**
      * How often the interval is restarted

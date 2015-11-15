@@ -17,15 +17,15 @@ window.SAX.init = function init () {
     var events  = core.Events(window, document, utils, dom);
 
     // Logic modules
-    var grid    = logic.grid(window, document, utils, dom, events);
-    var timer   = logic.timer(window, document, events);
-    var score   = logic.score(window, document, events);
-    var decor   = logic.decoration(window, document, utils);
-    var message = logic.message(window, document, utils, dom, events);
-    var page    = logic.page(window, document, dom);
+    var grid    = logic.grid(utils, dom, events);
+    var timer   = logic.timer(window, events);
+    var score   = logic.score(events);
+    var decor   = logic.decoration(utils);
+    var message = logic.message(utils, dom, events);
+    var page    = logic.page(dom);
 
     // Bootstrap
-    var application = bootstrap.app(window);
+    var application = bootstrap.app(window, page, dom, events);
 
     // Games
     games.grid = function () {

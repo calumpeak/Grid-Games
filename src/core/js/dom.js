@@ -21,14 +21,20 @@ core.Dom = function Dom (window, document, utils) {
     }
 
     /**
-     * Destroy an element
+     * Destroy an element(s)
      *
      * @public
      * @method destroy
-     * @param {Node} el
+     * @param {Node} nodes
      */
-    function destroy (el) {
-        el.parentNode.removeChild(el);
+    function destroy (nodes) {
+        if (!utils.isArray(nodes)) {
+            nodes = [ nodes ];
+        }
+
+        nodes.forEach(function (node) {
+            node.parentNode.removeChild(node);
+        });
     }
 
     /**
@@ -52,15 +58,24 @@ core.Dom = function Dom (window, document, utils) {
     }
 
     /**
-     * Appends an array of elements to the dom
+     * Appends an array/node of element(s) to the dom
      *
      * @public
      * @method append
-     * @param {Array} array
+     * @param {Array | Node} nodes
+     * @param {Node} element element to append to
      */
-    function append (array) {
-        array.forEach(function (element) {
-            document.body.appendChild(element);
+    function append (nodes, element) {
+        if (!utils.isArray(nodes)) {
+            nodes = [ nodes ];
+        }
+
+        if (!element) {
+            element = document.body;
+        }
+
+        nodes.forEach(function (node) {
+            element.appendChild(node);
         });
     }
 

@@ -6,7 +6,7 @@ var logic = logic || {};
  * @module Logic
  * @submodule Score
  */
-logic.score = function score (window, document, events) {
+logic.score = function score (events) {
 
     /**
      * Default score to set if none defined
