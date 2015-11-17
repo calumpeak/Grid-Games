@@ -43,6 +43,3 @@ window.SAX.init = function init () {
     application.run(games);
 
 };
-
-/* FOR DEBUG TODO: Remove */
-SAX.init();
