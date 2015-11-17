@@ -1,0 +1,3 @@
+describe("logic.timer", function () {
+
+});

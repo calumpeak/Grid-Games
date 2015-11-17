@@ -1,0 +1,3 @@
+describe("memory.inform", function () {
+
+});

@@ -1,0 +1,3 @@
+describe("logic.message", function () {
+
+});

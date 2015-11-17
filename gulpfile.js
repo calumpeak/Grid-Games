@@ -6,6 +6,7 @@ var hint    = require("gulp-jshint");
 var yuiDoc  = require("gulp-yuidoc");
 
 // Other Modules
+var karma   = require("karma");
 var stream  = require("event-stream");
 var stylish = require('jshint-stylish');
 
@@ -60,10 +61,18 @@ gulp.task("yuidoc", function () {
         .pipe(gulp.dest("./docs/"));
 });
 
+// Testing
+gulp.task("test", function (done) {
+    karma.server.start({
+        configFile: __dirname + "/karma.conf.js",
+        singleRun: true
+    }, done);
+})
+
 // Watch for file changes - concatenate if so
 gulp.task("watch", ["concat"], function () {
     gulp.watch(["src/*.js", "src/**/js/*.js", "src/games/**/js/*.js", "src/**/css/*.css"], ["concat"]);
 });
 
 // Kick off both linting tests
-gulp.task("lint", ["jscs", "jshint"]);
+gulp.task("lint", ["test", "jscs", "jshint"]);
