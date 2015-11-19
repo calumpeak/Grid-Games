@@ -46,15 +46,14 @@ core.Dom = function Dom (window, document, utils) {
      * @param {Node} arguments subsequent elements to append to el
      */
     function build (el) {
-        var element;
         var len = arguments.length;
         var i;
 
-        for (i = 1; i < arguments.length; i++) {
-            element = el.appendChild(arguments[i]);
+        for (i = 1; i < len; i++) {
+            el.appendChild(arguments[i]);
         }
 
-        return element;
+        return el;
     }
 
     /**

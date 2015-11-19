@@ -38,12 +38,12 @@ logic.grid = function grid (utils, dom, events) {
         this.grid   = dom.create("table");
 
         for (var i = 0; i < this.rows; i++) {
-            var tr = dom.build(this.grid, dom.create("tr"));
-
+            var tr = dom.create("tr");
             for (var j = 0; j < this.cols; j++) {
                 var td = dom.build(tr, dom.create("td"));
                 td.id = ++count;
             }
+            dom.build(this.grid, tr);
         }
 
         this.grid.id = "grid";
@@ -54,7 +54,7 @@ logic.grid = function grid (utils, dom, events) {
 
         events.bind(this.grid, "click", fireClick);
 
-        this.elem.appendChild(this.grid);
+        dom.append(this.grid, this.elem);
     };
 
     /**
