@@ -12,24 +12,24 @@ var stylish = require('jshint-stylish');
 
 // Main files
 var mainFiles = [
-    "src/**/js/*.js",       // Core modules
-    "src/games/**/js/*.js", // games
-    "src/main.js"           // main/init
+    "client/**/js/*.js",       // Core modules
+    "client/games/**/js/*.js", // games
+    "client/main.js"           // main/init
 ];
 
 // File concatenation
 gulp.task("concat", function () {
     // TODO duplication from above
     var js = [
-        "src/resource/IIFEopen.js", // IIFE open
-        "src/**/js/*.js",           // Core modules
-        "src/games/**/js/*.js",     // games
-        "src/main.js",              // Main/init
-        "src/resource/IIFEclose.js" // IFFE close
+        "client/resource/IIFEopen.js", // IIFE open
+        "client/**/js/*.js",           // Core modules
+        "client/games/**/js/*.js",     // games
+        "client/main.js",              // Main/init
+        "client/resource/IIFEclose.js" // IFFE close
     ];
 
     var css = [
-        "src/**/css/*.css"
+        "client/**/css/*.css"
     ];
 
     return stream.merge(
@@ -71,7 +71,7 @@ gulp.task("test", function (done) {
 
 // Watch for file changes - concatenate if so
 gulp.task("watch", ["concat"], function () {
-    gulp.watch(["src/*.js", "src/**/js/*.js", "src/games/**/js/*.js", "src/**/css/*.css"], ["concat"]);
+    gulp.watch(["client/*.js", "client/**/js/*.js", "client/games/**/js/*.js", "client/**/css/*.css"], ["concat"]);
 });
 
 // Kick off both linting tests

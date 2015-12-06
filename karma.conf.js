@@ -17,10 +17,10 @@ module.exports = function (config) {
             { pattern: './node_modules/mocha/mocha.js'    , watched: false, included: true,  served: true },
             { pattern: './node_modules/chai/chai.js'      , watched: false, included: true,  served: true },
             //{ pattern: './node_modules/async/lib/async.js', watched: false, included: true,  served: true },
-            { pattern: './src/*.js'                       , watched: true , included: true,  served: true },
-            { pattern: './src/**/js/*.js'                 , watched: true , included: true,  served: true },
-            { pattern: './src/**/tests/*.js'              , watched: true , included: true,  served: true },
-            //{ pattern: './src/**/tests/fixtures/*'        , watched: true , included: false, served: true }
+            { pattern: './client/*.js'                       , watched: true , included: true,  served: true },
+            { pattern: './client/**/js/*.js'                 , watched: true , included: true,  served: true },
+            { pattern: './client/**/tests/*.js'              , watched: true , included: true,  served: true },
+            //{ pattern: './client/**/tests/fixtures/*'        , watched: true , included: false, served: true }
         ],
 
         // This can be overriden on the command line.
@@ -51,8 +51,8 @@ module.exports = function (config) {
 
         preprocessors: {
             // Instrument source files on the fly.
-            './src/*.js':       [ 'coverage' ],
-            './src/**/js/*.js': [ 'coverage' ]
+            './client/*.js':       [ 'coverage' ],
+            './client/**/js/*.js': [ 'coverage' ]
         },
 
         // coverage reporter options
